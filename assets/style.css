@@ -1,0 +1,194 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* PALETA FINTECH */
+:root {
+    --primary: #0f172a;      /* azul escuro */
+    --secondary: #22c55e;    /* verde moderno */
+    --bg: #f8fafc;           /* fundo */
+    --card: #ffffff;
+    --text: #1e293b;
+    --border: #e5e7eb;
+}
+
+/* BODY */
+body {
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* HEADER (mais clean estilo fintech) */
+.header {
+    background: var(--card);
+    color: var(--text);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 240px;
+    height: 100vh;
+    background: var(--card);
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    border-right: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+.flex-grow-1 {
+    width: 100%;
+}
+
+/* MENU */
+.sidebar ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.sidebar a {
+    color: var(--text);
+    text-decoration: none;
+    display: block;
+    padding: 10px 12px;
+    margin: 5px 0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+/* HOVER */
+.sidebar a:hover {
+    background: #f1f5f9;
+}
+
+/* ITEM ATIVO */
+.sidebar a.active {
+    background: var(--secondary);
+    color: white;
+    font-weight: 500;
+}
+
+/* CONTEÚDO */
+.main-content {
+    margin-left: 240px;
+    padding: 30px;
+    min-height: 100vh;
+}
+
+/* CARD FINTECH */
+.card {
+    background: var(--card);
+    border-radius: 16px;
+    border: none;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+/* BOTÃO PRINCIPAL */
+.btn {
+    background: var(--secondary);
+    color: white;
+    padding: 12px 20px;
+    display: inline-block;
+    margin-top: 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+/* HOVER BOTÃO */
+.btn:hover {
+    background: #16a34a;
+}
+
+/* INPUTS (IMPORTANTE PRA CALCULADORA) */
+input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* RESULTADO */
+.resultado {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background: #ecfdf5;
+    color: #065f46;
+    font-weight: bold;
+}
+
+/* MENU TOGGLE */
+#menu-toggle {
+    display: none;
+    font-size: 20px;
+    background: none;
+    border: none;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+
+    .sidebar {
+        left: -240px;
+        z-index: 1000;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    #menu-toggle {
+        display: block;
+    }
+
+    /* INPUT FINTECH */
+.form-control {
+    border-radius: 10px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    box-shadow: none;
+}
+
+.form-control:focus {
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 2px rgba(34,197,94,0.2);
+}
+
+/* LABEL */
+.form-label {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+/* RESULTADO BONITO */
+.resultado {
+    background: #ecfdf5;
+    border-radius: 12px;
+    padding: 20px;
+    color: #065f46;
+    font-size: 18px;
+}
+}
