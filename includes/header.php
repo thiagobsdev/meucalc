@@ -1,3 +1,8 @@
+<?php
+$scriptDir = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
+$baseUrl = preg_replace('#/pages$#', '', $scriptDir);
+$baseUrl = rtrim($baseUrl, '/');
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,28 +10,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MeuCalc</title>
 
-    <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- CSS personalizado -->
-    <link rel="stylesheet" href="/meucalc/assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="<?= $baseUrl ?>/assets/style.css">
 </head>
-
 <body>
+<header class="topbar">
+    <div class="topbar-left">
+        <button id="menu-toggle" class="menu-toggle" type="button" aria-label="Abrir menu">
+            <i class="bi bi-list"></i>
+        </button>
 
-<!-- HEADER FINTECH -->
-<nav class="navbar bg-white shadow-sm px-4">
+        <a href="<?= $baseUrl ?>/index.php" class="brand">
+            <div class="brand-icon">
+                <i class="bi bi-graph-up-arrow"></i>
+            </div>
+            <div class="brand-text">
+                <span class="brand-title">MeuCalc</span>
+                <span class="brand-subtitle">Calculadoras financeiras</span>
+            </div>
+        </a>
+    </div>
 
-    <!-- BOTÃO MOBILE -->
-    <button class="btn btn-light d-md-none" id="menu-toggle">
-        ☰
-    </button>
-
-    <!-- LOGO -->
-   <span class="navbar-brand fw-bold text-dark m-0 d-flex align-items-center gap-2">
-    <i class="bi bi-graph-up-arrow text-success fs-4"></i>
-    MeuCalc
-</span>
-
-</nav>
+    <div class="topbar-right">
+        <span class="topbar-badge">Beta</span>
+    </div>
+</header>

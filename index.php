@@ -1,87 +1,70 @@
-<?php include 'includes/header.php'; ?>
-<?php include 'includes/sidebar.php'; ?>
+<?php
+$currentPage = 'home';
+include 'includes/header.php';
+include 'includes/sidebar.php';
+?>
 
-<div class="main-content">
-
-    <div class="container-fluid">
-
-        <!-- HERO PRINCIPAL -->
-        <div class="card fintech-card p-4 mb-4">
-
-            <div class="row align-items-center">
-
-                <div class="col-md-8">
-                    <h1 class="fw-bold mb-2">
-                        Simule seus investimentos 📈
-                    </h1>
-
-                    <p class="text-muted mb-3">
-                        Descubra quanto seu dinheiro pode render com juros compostos de forma simples e rápida.
-                    </p>
-
-                    <a href="pages/calculadora.php" class="btn btn-success btn-lg">
-                        Começar simulação
-                    </a>
-                </div>
-
-                <div class="col-md-4 text-center d-none d-md-block">
-                    <h2 class="text-success fw-bold">+R$</h2>
-                    <small class="text-muted">Simule crescimento financeiro</small>
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- CARDS DE FUNCIONALIDADES -->
-        <div class="row g-4">
-
-            <div class="col-md-4">
-                <div class="card fintech-card h-100 p-3">
-                    <h6 class="fw-bold">📊 Juros Compostos</h6>
-                    <p class="text-muted small">
-                        Veja como seu dinheiro cresce ao longo do tempo.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card fintech-card h-100 p-3">
-                    <h6 class="fw-bold">💰 Aportes Mensais</h6>
-                    <p class="text-muted small">
-                        Simule investimentos recorrentes e seus resultados.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card fintech-card h-100 p-3">
-                    <h6 class="fw-bold">⚡ Resultado Rápido</h6>
-                    <p class="text-muted small">
-                        Tenha respostas instantâneas para suas decisões financeiras.
-                    </p>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- CALL TO ACTION FUTURO (AFILIADOS) -->
-        <div class="card fintech-card p-4 mt-4">
-
-            <h5 class="fw-bold">Comece a investir hoje</h5>
-
-            <p class="text-muted mb-3">
-                Simule seus resultados e dê o próximo passo para crescer seu patrimônio.
-            </p>
-
-            <button class="btn btn-outline-success">
-                Ver oportunidades
-            </button>
-
-        </div>
-
+<section class="hero">
+    <div class="hero-badge">
+        <i class="bi bi-lightning-charge-fill"></i>
+        Simulador gratuito
     </div>
 
-</div>
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1 class="hero-title">
+                Faça seu dinheiro
+                <span>trabalhar por você</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                Simule investimentos, entenda o efeito dos juros compostos
+                e tome decisões financeiras com mais clareza.
+            </p>
+
+            <a href="<?= $baseUrl ?>/pages/calculadora.php" class="hero-button">
+                <i class="bi bi-play-fill"></i>
+                Começar agora
+            </a>
+        </div>
+
+        <div class="hero-stat">
+            <strong>+R$</strong>
+            <span>Visual moderno e cálculos rápidos</span>
+        </div>
+    </div>
+</section>
+
+<section class="cards-grid">
+    <article class="info-card">
+        <i class="bi bi-graph-up-arrow"></i>
+        <h3>Juros compostos</h3>
+        <p>Veja como o capital cresce com o tempo e entenda o impacto dos aportes mensais.</p>
+    </article>
+
+    <article class="info-card">
+        <i class="bi bi-calendar-check"></i>
+        <h3>Projeção simples</h3>
+        <p>Faça simulações rápidas para comparar cenários e visualizar resultados futuros.</p>
+    </article>
+
+    <article class="info-card">
+        <i class="bi bi-phone"></i>
+        <h3>Responsivo</h3>
+        <p>Use no computador ou no celular com sidebar funcional e navegação mais limpa.</p>
+    </article>
+</section>
+
+<section class="cta-box">
+    <div>
+        <h4>Pronto para começar?</h4>
+        <p>Acesse a calculadora de juros compostos e faça sua primeira simulação.</p>
+    </div>
+
+    <a href="<?= $baseUrl ?>/pages/calculadora.php" class="cta-button">
+        Ver calculadora
+        <i class="bi bi-arrow-right"></i>
+    </a>
+</section>
 
 <?php include 'includes/footer.php'; ?>

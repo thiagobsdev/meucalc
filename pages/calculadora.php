@@ -1,49 +1,57 @@
-<?php include '../includes/header.php'; ?>
-<?php include '../includes/sidebar.php'; ?>
+<?php
+$currentPage = 'juros';
+include '../includes/header.php';
+include '../includes/sidebar.php';
+?>
 
-<div class="main-content">
+<div class="page-header">
+    <h1>Juros Compostos</h1>
+    <p>Simule o crescimento do seu investimento ao longo do tempo.</p>
+</div>
 
-    <div class="container">
-
-        <div class="card fintech-card p-4">
-
-            <h3 class="fw-bold mb-4">📊 Calculadora de Juros Compostos</h3>
-
-            <div class="row g-4">
-
-                <div class="col-md-6">
-                    <label class="form-label">Valor inicial</label>
-                    <input type="number" id="valorInicial" class="form-control" placeholder="Ex: 1000">
+<div class="calc-wrapper">
+    <div class="calc-card">
+        <div class="form-grid">
+            <div class="form-group">
+                <label class="form-label" for="valorInicial">Valor inicial</label>
+                <div class="input-wrap prefix">
+                    <span class="input-prefix">R$</span>
+                    <input type="number" id="valorInicial" class="form-control" placeholder="1000">
                 </div>
-
-                <div class="col-md-6">
-                    <label class="form-label">Aporte mensal</label>
-                    <input type="number" id="aporte" class="form-control" placeholder="Ex: 500">
-                </div>
-
-                <div class="col-md-6">
-                    <label class="form-label">Taxa de juros (% ao mês)</label>
-                    <input type="number" id="taxa" class="form-control" placeholder="Ex: 1">
-                </div>
-
-                <div class="col-md-6">
-                    <label class="form-label">Tempo (meses)</label>
-                    <input type="number" id="tempo" class="form-control" placeholder="Ex: 12">
-                </div>
-
             </div>
 
-            <button class="btn btn-success w-100 mt-4 py-2" onclick="calcular()">
-                Calcular investimento
-            </button>
+            <div class="form-group">
+                <label class="form-label" for="aporte">Aporte mensal</label>
+                <div class="input-wrap prefix">
+                    <span class="input-prefix">R$</span>
+                    <input type="number" id="aporte" class="form-control" placeholder="500">
+                </div>
+            </div>
 
-            <!-- RESULTADO -->
-            <div id="resultado" class="resultado mt-4 d-none"></div>
+            <div class="form-group">
+                <label class="form-label" for="taxa">Taxa de juros</label>
+                <div class="input-wrap suffix">
+                    <span class="input-suffix">% a.m.</span>
+                    <input type="number" id="taxa" class="form-control" placeholder="1.0" step="0.01">
+                </div>
+            </div>
 
+            <div class="form-group">
+                <label class="form-label" for="tempo">Período</label>
+                <div class="input-wrap suffix">
+                    <span class="input-suffix">meses</span>
+                    <input type="number" id="tempo" class="form-control" placeholder="12">
+                </div>
+            </div>
         </div>
 
-    </div>
+        <button type="button" class="calc-button" onclick="calcular()">
+            <i class="bi bi-calculator"></i>
+            Calcular investimento
+        </button>
 
+        <div id="resultado" class="hidden"></div>
+    </div>
 </div>
 
 <?php include '../includes/footer.php'; ?>

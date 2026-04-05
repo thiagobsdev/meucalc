@@ -1,46 +1,55 @@
-<div class="d-flex">
-
+<?php
+if (!isset($currentPage)) {
+    $currentPage = '';
+}
+?>
+<div class="app-layout">
     <aside class="sidebar" id="sidebar">
-
-        <div class="mb-4">
-            <div class="d-flex align-items-center gap-2 mb-2">
-    <i class="bi bi-cash-stack text-success fs-5"></i>
-    <span class="fw-bold">MeuCalc</span>
-</div>
-<small class="text-muted">Simulador financeiro</small>
-            <small class="text-muted">Simulador financeiro</small>
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <i class="bi bi-calculator-fill"></i>
+            </div>
+            <div>
+                <div class="sidebar-title">MeuCalc</div>
+                <div class="sidebar-subtitle">Planejamento financeiro</div>
+            </div>
         </div>
 
-        <ul class="nav flex-column gap-2">
+        <nav class="sidebar-nav">
+            <div class="sidebar-section">Principal</div>
 
-            <li class="nav-item">
-                <a href="/meucalc/index.php" class="nav-link active">
-                    <span class="me-2">🏠</span> Início
-                </a>
-            </li>
+            <a href="<?= $baseUrl ?>/index.php" class="sidebar-link <?= $currentPage === 'home' ? 'active' : '' ?>">
+                <i class="bi bi-house-door"></i>
+                <span>Início</span>
+            </a>
 
-            <li class="nav-item">
-                <a href="/meucalc/pages/calculadora.php" class="nav-link">
-                    <span class="me-2">📊</span> Juros Compostos
-                </a>
-            </li>
+            <a href="<?= $baseUrl ?>/pages/calculadora.php" class="sidebar-link <?= $currentPage === 'juros' ? 'active' : '' ?>">
+                <i class="bi bi-bar-chart-line"></i>
+                <span>Juros compostos</span>
+            </a>
 
-        </ul>
+            <div class="sidebar-section">Em breve</div>
 
-        <hr class="my-4">
+            <div class="sidebar-link disabled">
+                <i class="bi bi-bank"></i>
+                <span>Financiamento</span>
+                <small>SOON</small>
+            </div>
 
-        <small class="text-muted">Em breve</small>
+            <div class="sidebar-link disabled">
+                <i class="bi bi-cash-coin"></i>
+                <span>Empréstimos</span>
+                <small>SOON</small>
+            </div>
 
-        <ul class="nav flex-column mt-2 gap-2">
-            <li class="nav-item">
-                <span class="nav-link text-muted">💳 Financiamento</span>
-            </li>
-            <li class="nav-item">
-                <span class="nav-link text-muted">🏦 Empréstimos</span>
-            </li>
-        </ul>
-
+            <div class="sidebar-link disabled">
+                <i class="bi bi-piggy-bank"></i>
+                <span>Aposentadoria</span>
+                <small>SOON</small>
+            </div>
+        </nav>
     </aside>
 
-    <!-- 👇 MUITO IMPORTANTE -->
-    <div class="flex-grow-1">
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main class="main-content">
