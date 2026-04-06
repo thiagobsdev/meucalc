@@ -33,19 +33,19 @@ if (!isset($currentPage)) {
             <div class="sidebar-link disabled">
                 <i class="bi bi-bank"></i>
                 <span>Financiamento</span>
-                <small>SOON</small>
+                <small>Em breve</small>
             </div>
 
             <div class="sidebar-link disabled">
                 <i class="bi bi-cash-coin"></i>
                 <span>Empréstimos</span>
-                <small>SOON</small>
+                <small>Em breve</small>
             </div>
 
             <div class="sidebar-link disabled">
                 <i class="bi bi-piggy-bank"></i>
                 <span>Aposentadoria</span>
-                <small>SOON</small>
+                <small>Em breve</small>
             </div>
         </nav>
     </aside>
