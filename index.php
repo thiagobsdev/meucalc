@@ -14,7 +14,7 @@ include 'includes/sidebar.php';
         <div class="hero-text">
             <h1 class="hero-title">
                 Faça seu dinheiro
-                <span>trabalhar por você TESTE DE DEPLOY</span>
+                <span>trabalhar por você Teste webhook hostinger </span>
             </h1>
 
             <p class="hero-subtitle">
