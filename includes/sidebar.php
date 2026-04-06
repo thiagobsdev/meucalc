@@ -18,7 +18,7 @@ if (!isset($currentPage)) {
         <nav class="sidebar-nav">
             <div class="sidebar-section">Principal</div>
 
-            <a href="<?= $baseUrl ?>/index.php" class="sidebar-link <?= $currentPage === 'home' ? 'active' : '' ?>">
+            <a href="<?= $baseUrl ?>/" class="sidebar-link <?= $currentPage === 'home' ? 'active' : '' ?>">
                 <i class="bi bi-house-door"></i>
                 <span>Início</span>
             </a>
