@@ -66,6 +66,7 @@ function initMoneyMasks() {
                 input.value = '';
                 return;
             }
+
             input.value = formatCurrencyInput(input.value);
         });
     });
@@ -79,6 +80,7 @@ function formatCurrencyInput(value) {
     }
 
     const number = Number(digits) / 100;
+
     return number.toLocaleString('pt-BR', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
@@ -92,6 +94,7 @@ function parseBrazilianNumber(value) {
 
     const normalized = String(value).trim().replace(/\./g, '').replace(',', '.');
     const parsed = parseFloat(normalized);
+
     return Number.isFinite(parsed) ? parsed : 0;
 }
 
@@ -111,19 +114,150 @@ function formatPercent(value) {
 
 function monthlyRateFromInput(rateValue, rateType) {
     const decimalRate = rateValue / 100;
+
     if (rateType === 'anual') {
         return Math.pow(1 + decimalRate, 1 / 12) - 1;
     }
+
     return decimalRate;
+}
+
+function formatDateForFile(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+}
+
+function buildSimulationFilename(summary, extension) {
+    const datePart = formatDateForFile(new Date());
+    const monthsPart = summary?.tempo || 0;
+    return `simulacao-juros-compostos-${monthsPart}-meses-${datePart}.${extension}`;
+}
+
+function downloadBlob(content, filename, mimeType) {
+    const blob = new Blob([content], { type: mimeType });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    setTimeout(() => {
+        URL.revokeObjectURL(url);
+    }, 100);
+}
+
+function escapeCsvValue(value) {
+    const text = String(value ?? '');
+    return `"${text.replace(/"/g, '""')}"`;
 }
 
 function initCompoundCalculator() {
     const button = document.getElementById('btnCalcular');
+    const exportExcelButton = document.getElementById('btnExportarExcel');
+    const exportCsvButton = document.getElementById('btnExportarCsv');
+
     if (!button) {
         return;
     }
 
     let chartInstance = null;
+    let simulationRows = [];
+    let simulationSummary = null;
+
+    const exportToCsv = () => {
+        if (!simulationRows.length || !simulationSummary) {
+            return;
+        }
+
+        const lines = [
+            ['Simulação de Juros Compostos', ''],
+            ['Valor inicial', simulationSummary.valorInicialFormatado],
+            ['Aporte mensal', simulationSummary.aporteFormatado],
+            ['Taxa de juros', simulationSummary.taxaFormatada],
+            ['Período', `${simulationSummary.tempo} meses`],
+            ['Valor final estimado', simulationSummary.valorFinalFormatado],
+            ['Total investido', simulationSummary.totalInvestidoFormatado],
+            ['Juros ganhos', simulationSummary.jurosGanhosFormatado],
+            ['Rentabilidade', simulationSummary.rentabilidadeFormatada],
+            [],
+            ['Mês', 'Saldo inicial', 'Aporte', 'Juros do mês', 'Saldo final']
+        ];
+
+        simulationRows.forEach((row) => {
+            lines.push([
+                row.mes,
+                row.saldoInicialFormatado,
+                row.aporteFormatado,
+                row.jurosMesFormatado,
+                row.saldoFinalFormatado
+            ]);
+        });
+
+        const csvContent = '\uFEFF' + lines
+            .map((line) => line.map(escapeCsvValue).join(';'))
+            .join('\n');
+
+        downloadBlob(csvContent, buildSimulationFilename(simulationSummary, 'csv'), 'text/csv;charset=utf-8;');
+    };
+
+    const exportToExcel = () => {
+        if (!simulationRows.length || !simulationSummary) {
+            return;
+        }
+
+        if (typeof XLSX === 'undefined') {
+            alert('Não foi possível carregar a biblioteca de Excel.');
+            return;
+        }
+
+        const workbook = XLSX.utils.book_new();
+
+        const summaryData = [
+            ['Simulação de Juros Compostos', ''],
+            ['Valor inicial', simulationSummary.valorInicial],
+            ['Aporte mensal', simulationSummary.aporte],
+            ['Taxa de juros (%)', simulationSummary.taxa],
+            ['Tipo da taxa', simulationSummary.tipoTaxaLabel],
+            ['Período (meses)', simulationSummary.tempo],
+            ['Valor final estimado', simulationSummary.valorFinal],
+            ['Total investido', simulationSummary.totalInvestido],
+            ['Juros ganhos', simulationSummary.jurosGanhos],
+            ['Rentabilidade (%)', simulationSummary.rentabilidade]
+        ];
+
+        const evolutionData = [
+            ['Mês', 'Saldo inicial', 'Aporte', 'Juros do mês', 'Saldo final'],
+            ...simulationRows.map((row) => [
+                row.mes,
+                row.saldoInicial,
+                row.aporte,
+                row.jurosMes,
+                row.saldoFinal
+            ])
+        ];
+
+        const summarySheet = XLSX.utils.aoa_to_sheet(summaryData);
+        const evolutionSheet = XLSX.utils.aoa_to_sheet(evolutionData);
+
+        XLSX.utils.book_append_sheet(workbook, summarySheet, 'Resumo');
+        XLSX.utils.book_append_sheet(workbook, evolutionSheet, 'Evolucao');
+
+        XLSX.writeFile(workbook, buildSimulationFilename(simulationSummary, 'xlsx'));
+    };
+
+    if (exportCsvButton) {
+        exportCsvButton.addEventListener('click', exportToCsv);
+    }
+
+    if (exportExcelButton) {
+        exportExcelButton.addEventListener('click', exportToExcel);
+    }
 
     button.addEventListener('click', () => {
         const valorInicial = parseBrazilianNumber(document.getElementById('valorInicial')?.value);
@@ -152,6 +286,8 @@ function initCompoundCalculator() {
         const tbody = document.getElementById('tabelaEvolucaoBody');
         let rows = '';
 
+        simulationRows = [];
+
         for (let mes = 1; mes <= tempo; mes++) {
             saldoInicialMes = saldo;
             const jurosMes = saldoInicialMes * taxaMensal;
@@ -161,28 +297,64 @@ function initCompoundCalculator() {
             labels.push(`${mes}`);
             data.push(Number(saldo.toFixed(2)));
 
+            const rowData = {
+                mes,
+                saldoInicial: Number(saldoInicialMes.toFixed(2)),
+                aporte: Number(aporte.toFixed(2)),
+                jurosMes: Number(jurosMes.toFixed(2)),
+                saldoFinal: Number(saldo.toFixed(2)),
+                saldoInicialFormatado: formatMoney(saldoInicialMes),
+                aporteFormatado: formatMoney(aporte),
+                jurosMesFormatado: formatMoney(jurosMes),
+                saldoFinalFormatado: formatMoney(saldo)
+            };
+
+            simulationRows.push(rowData);
+
             rows += `
                 <tr>
-                    <td>${mes}</td>
-                    <td>${formatMoney(saldoInicialMes)}</td>
-                    <td>${formatMoney(aporte)}</td>
-                    <td>${formatMoney(jurosMes)}</td>
-                    <td>${formatMoney(saldo)}</td>
+                    <td>${rowData.mes}</td>
+                    <td>${rowData.saldoInicialFormatado}</td>
+                    <td>${rowData.aporteFormatado}</td>
+                    <td>${rowData.jurosMesFormatado}</td>
+                    <td>${rowData.saldoFinalFormatado}</td>
                 </tr>
             `;
         }
 
         const jurosGanhos = saldo - totalInvestido;
         const rentabilidade = totalInvestido > 0 ? (jurosGanhos / totalInvestido) * 100 : 0;
+        const tipoTaxaLabel = tipoTaxa === 'anual' ? 'Ao ano' : 'Ao mês';
 
-        document.getElementById('resValorFinal').textContent = formatMoney(saldo);
-        document.getElementById('resTotalInvestido').textContent = formatMoney(totalInvestido);
-        document.getElementById('resJurosGanhos').textContent = formatMoney(jurosGanhos);
-        document.getElementById('resRentabilidade').textContent = formatPercent(rentabilidade);
+        simulationSummary = {
+            valorInicial: Number(valorInicial.toFixed(2)),
+            aporte: Number(aporte.toFixed(2)),
+            taxa: Number(taxa.toFixed(2)),
+            tipoTaxa,
+            tipoTaxaLabel,
+            tempo,
+            valorFinal: Number(saldo.toFixed(2)),
+            totalInvestido: Number(totalInvestido.toFixed(2)),
+            jurosGanhos: Number(jurosGanhos.toFixed(2)),
+            rentabilidade: Number(rentabilidade.toFixed(2)),
+            valorInicialFormatado: formatMoney(valorInicial),
+            aporteFormatado: formatMoney(aporte),
+            taxaFormatada: `${formatPercent(taxa)} ${tipoTaxaLabel}`,
+            valorFinalFormatado: formatMoney(saldo),
+            totalInvestidoFormatado: formatMoney(totalInvestido),
+            jurosGanhosFormatado: formatMoney(jurosGanhos),
+            rentabilidadeFormatada: formatPercent(rentabilidade)
+        };
+
+        document.getElementById('resValorFinal').textContent = simulationSummary.valorFinalFormatado;
+        document.getElementById('resTotalInvestido').textContent = simulationSummary.totalInvestidoFormatado;
+        document.getElementById('resJurosGanhos').textContent = simulationSummary.jurosGanhosFormatado;
+        document.getElementById('resRentabilidade').textContent = simulationSummary.rentabilidadeFormatada;
         tbody.innerHTML = rows;
         document.getElementById('resultado').classList.remove('hidden');
 
         const canvas = document.getElementById('graficoEvolucao');
+
         if (!canvas || typeof Chart === 'undefined') {
             return;
         }

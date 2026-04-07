@@ -75,6 +75,18 @@ include '../includes/sidebar.php';
                 </div>
             </div>
 
+            <div class="result-actions">
+                <button type="button" class="action-button" id="btnExportarExcel">
+                    <i class="bi bi-file-earmark-excel"></i>
+                    Exportar Excel
+                </button>
+
+                <button type="button" class="action-button action-button-secondary" id="btnExportarCsv">
+                    <i class="bi bi-filetype-csv"></i>
+                    Exportar CSV
+                </button>
+            </div>
+
             <div class="chart-card">
                 <div class="section-head">
                     <h3>Evolução do patrimônio</h3>
@@ -112,5 +124,6 @@ include '../includes/sidebar.php';
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 
 <?php include '../includes/footer.php'; ?>
