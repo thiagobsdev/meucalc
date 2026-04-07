@@ -9,9 +9,9 @@ if (!isset($currentPage)) {
             <div class="sidebar-logo">
                 <i class="bi bi-calculator-fill"></i>
             </div>
-            <div>
-                <div class="sidebar-title">MeuCalc</div>
-                <div class="sidebar-subtitle">Planejamento financeiro</div>
+        <div>
+            <div class="sidebar-title">MeuCalc</div>
+            <div class="sidebar-subtitle">Planejamento financeiro</div>
             </div>
         </div>
 

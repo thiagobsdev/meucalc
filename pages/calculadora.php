@@ -75,7 +75,25 @@ include '../includes/sidebar.php';
                 </div>
             </div>
 
+            <div class="summary-text-card">
+                <div class="section-head section-head-inline">
+                    <div>
+                        <h3>Resumo da simulação</h3>
+                        <p>Texto pronto para compartilhar ou salvar.</p>
+                    </div>
+                </div>
+
+                <p id="resumoSimulacao" class="summary-text-output">
+                    Preencha os dados e calcule para gerar um resumo automático.
+                </p>
+            </div>
+
             <div class="result-actions">
+                <button type="button" class="action-button action-button-secondary" id="btnCopiarResumo">
+                    <i class="bi bi-clipboard"></i>
+                    Copiar resultado
+                </button>
+
                 <button type="button" class="action-button" id="btnExportarExcel">
                     <i class="bi bi-file-earmark-excel"></i>
                     Exportar Excel
@@ -90,7 +108,7 @@ include '../includes/sidebar.php';
             <div class="chart-card">
                 <div class="section-head">
                     <h3>Evolução do patrimônio</h3>
-                    <p>Visualize o crescimento mês a mês.</p>
+                    <p>Compare o crescimento do patrimônio com o total efetivamente investido.</p>
                 </div>
 
                 <div class="chart-container">
