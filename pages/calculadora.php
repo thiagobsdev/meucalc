@@ -73,8 +73,8 @@ include '../includes/sidebar.php';
 </div>
 
 <div class="calc-wrapper calc-wrapper-wide" id="simulador-investimento">
-    <div class="calc-card calc-card-featured">
-        <div class="calc-card-head">
+    <div class="calc-card calc-card-featured calc-card-premium">
+        <div class="calc-card-head calc-card-head-premium">
             <div>
                 <span class="calc-card-kicker">Preencha os dados abaixo</span>
                 <h2>Monte sua simulação</h2>
@@ -122,35 +122,56 @@ include '../includes/sidebar.php';
         <div class="form-grid">
             <div class="form-group">
                 <label class="form-label" for="valorInicial">Valor inicial</label>
-                <input type="text" id="valorInicial" class="form-control money-input" placeholder="0,00" inputmode="numeric" autocomplete="off">
+                <div class="input-wrap input-wrap-icon">
+                    <span class="input-icon">
+                        <i class="bi bi-wallet2"></i>
+                    </span>
+                    <input type="text" id="valorInicial" class="form-control form-control-icon money-input" placeholder="0,00" inputmode="numeric" autocomplete="off">
+                </div>
             </div>
 
             <div class="form-group">
                 <label class="form-label" for="aporte">Aporte mensal</label>
-                <input type="text" id="aporte" class="form-control money-input" placeholder="0,00" inputmode="numeric" autocomplete="off">
+                <div class="input-wrap input-wrap-icon">
+                    <span class="input-icon">
+                        <i class="bi bi-piggy-bank"></i>
+                    </span>
+                    <input type="text" id="aporte" class="form-control form-control-icon money-input" placeholder="0,00" inputmode="numeric" autocomplete="off">
+                </div>
             </div>
 
             <div class="form-group">
                 <label class="form-label" for="taxa">Taxa de juros</label>
-                <div class="input-wrap suffix suffix-short">
+                <div class="input-wrap input-wrap-icon suffix suffix-short">
+                    <span class="input-icon">
+                        <i class="bi bi-percent"></i>
+                    </span>
                     <span class="input-suffix">%</span>
-                    <input type="number" id="taxa" class="form-control" placeholder="1,00" min="0" step="0.01">
+                    <input type="number" id="taxa" class="form-control form-control-icon" placeholder="1,00" min="0" step="0.01">
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="form-label" for="tipoTaxa">Tipo da taxa</label>
-                <select id="tipoTaxa" class="form-control">
-                    <option value="mensal">Ao mês</option>
-                    <option value="anual">Ao ano</option>
-                </select>
+                <div class="input-wrap input-wrap-icon">
+                    <span class="input-icon">
+                        <i class="bi bi-arrow-repeat"></i>
+                    </span>
+                    <select id="tipoTaxa" class="form-control form-control-icon">
+                        <option value="mensal">Ao mês</option>
+                        <option value="anual">Ao ano</option>
+                    </select>
+                </div>
             </div>
 
             <div class="form-group full">
                 <label class="form-label" for="tempo">Período</label>
-                <div class="input-wrap suffix">
+                <div class="input-wrap input-wrap-icon suffix">
+                    <span class="input-icon">
+                        <i class="bi bi-calendar3"></i>
+                    </span>
                     <span class="input-suffix">meses</span>
-                    <input type="number" id="tempo" class="form-control" placeholder="12" min="1" step="1">
+                    <input type="number" id="tempo" class="form-control form-control-icon" placeholder="12" min="1" step="1">
                 </div>
             </div>
         </div>
@@ -199,28 +220,48 @@ include '../includes/sidebar.php';
             </div>
 
             <div class="summary-grid">
-                <div class="summary-card summary-card-highlight">
-                    <span class="summary-label">Valor final estimado</span>
+                <div class="summary-card summary-card-highlight summary-card-primary">
+                    <div class="summary-card-head">
+                        <span class="summary-card-icon">
+                            <i class="bi bi-trophy"></i>
+                        </span>
+                        <span class="summary-label">Valor final estimado</span>
+                    </div>
                     <strong class="summary-value" id="resValorFinal">R$ 0,00</strong>
                 </div>
 
                 <div class="summary-card">
-                    <span class="summary-label">Total investido</span>
+                    <div class="summary-card-head">
+                        <span class="summary-card-icon">
+                            <i class="bi bi-safe2"></i>
+                        </span>
+                        <span class="summary-label">Total investido</span>
+                    </div>
                     <strong class="summary-value" id="resTotalInvestido">R$ 0,00</strong>
                 </div>
 
                 <div class="summary-card">
-                    <span class="summary-label">Juros ganhos</span>
+                    <div class="summary-card-head">
+                        <span class="summary-card-icon">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </span>
+                        <span class="summary-label">Juros ganhos</span>
+                    </div>
                     <strong class="summary-value positive" id="resJurosGanhos">R$ 0,00</strong>
                 </div>
 
                 <div class="summary-card">
-                    <span class="summary-label">Rentabilidade sobre o valor investido</span>
+                    <div class="summary-card-head">
+                        <span class="summary-card-icon">
+                            <i class="bi bi-speedometer2"></i>
+                        </span>
+                        <span class="summary-label">Rentabilidade sobre o valor investido</span>
+                    </div>
                     <strong class="summary-value" id="resRentabilidade">0,00%</strong>
                 </div>
             </div>
 
-            <div class="summary-text-card">
+            <div class="summary-text-card summary-text-card-premium">
                 <div class="section-head section-head-inline">
                     <div>
                         <h3>Resumo da simulação</h3>
@@ -239,6 +280,11 @@ include '../includes/sidebar.php';
                     Copiar resultado
                 </button>
 
+                <button type="button" class="action-button action-button-secondary" id="btnCompartilharSimulacao">
+                    <i class="bi bi-share"></i>
+                    Compartilhar simulação
+                </button>
+
                 <button type="button" class="action-button" id="btnExportarExcel">
                     <i class="bi bi-file-earmark-excel"></i>
                     Exportar Excel
@@ -250,7 +296,7 @@ include '../includes/sidebar.php';
                 </button>
             </div>
 
-            <div class="chart-card">
+            <div class="chart-card chart-card-premium">
                 <div class="section-head">
                     <h3>Evolução do patrimônio</h3>
                     <p>Compare o crescimento do patrimônio com o total efetivamente investido.</p>
@@ -261,7 +307,7 @@ include '../includes/sidebar.php';
                 </div>
             </div>
 
-            <div class="table-card">
+            <div class="table-card table-card-premium">
                 <div class="section-head">
                     <h3>Tabela de evolução</h3>
                     <p>Detalhamento completo por período.</p>
@@ -286,7 +332,7 @@ include '../includes/sidebar.php';
     </div>
 </div>
 
-<section class="trust-section">
+<section class="trust-section trust-section-premium">
     <div class="trust-section-head">
         <span class="trust-section-kicker">Conteúdo de apoio</span>
         <h2>Entenda melhor a simulação</h2>

@@ -208,6 +208,49 @@ function buildSimulationSummaryText(summary) {
   return `${fraseImpacto} Em ${summary.tempo} meses, investindo ${summary.valorInicialFormatado} inicialmente e ${summary.aporteFormatado} por mês, a uma taxa de ${summary.taxaFormatada}, o valor final estimado pode chegar a ${summary.valorFinalFormatado}. Desse total, ${summary.totalInvestidoFormatado} foram aportados por você e ${summary.jurosGanhosFormatado} podem vir dos juros compostos.`;
 }
 
+function buildSimulationShareUrl(values) {
+  const url = new URL(window.location.href);
+  url.search = "";
+
+  url.searchParams.set(
+    "valorInicial",
+    Number(values.valorInicial || 0).toFixed(2),
+  );
+  url.searchParams.set("aporte", Number(values.aporte || 0).toFixed(2));
+  url.searchParams.set("taxa", Number(values.taxa || 0).toFixed(2));
+  url.searchParams.set(
+    "tipoTaxa",
+    values.tipoTaxa === "anual" ? "anual" : "mensal",
+  );
+  url.searchParams.set("tempo", String(parseInt(values.tempo, 10) || 0));
+
+  return url.toString();
+}
+
+function readSimulationFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const keys = ["valorInicial", "aporte", "taxa", "tipoTaxa", "tempo"];
+  const hasAnyParam = keys.some((key) => params.has(key));
+
+  if (!hasAnyParam) {
+    return null;
+  }
+
+  const valorInicial = Number.parseFloat(params.get("valorInicial") || "0");
+  const aporte = Number.parseFloat(params.get("aporte") || "0");
+  const taxa = Number.parseFloat(params.get("taxa") || "0");
+  const tempo = Number.parseInt(params.get("tempo") || "0", 10);
+  const tipoTaxa = params.get("tipoTaxa") === "anual" ? "anual" : "mensal";
+
+  return {
+    valorInicial: Number.isFinite(valorInicial) ? valorInicial : 0,
+    aporte: Number.isFinite(aporte) ? aporte : 0,
+    taxa: Number.isFinite(taxa) ? taxa : 0,
+    tipoTaxa,
+    tempo: Number.isFinite(tempo) ? tempo : 0,
+  };
+}
+
 async function copyTextToClipboard(text) {
   if (navigator.clipboard && window.isSecureContext) {
     await navigator.clipboard.writeText(text);
@@ -233,6 +276,9 @@ function initCompoundCalculator() {
   const exportExcelButton = document.getElementById("btnExportarExcel");
   const exportCsvButton = document.getElementById("btnExportarCsv");
   const copySummaryButton = document.getElementById("btnCopiarResumo");
+  const shareSimulationButton = document.getElementById(
+    "btnCompartilharSimulacao",
+  );
   const summaryOutput = document.getElementById("resumoSimulacao");
 
   const impactMessageOutput = document.getElementById("resMensagemImpacto");
@@ -323,6 +369,7 @@ function initCompoundCalculator() {
       ["Total investido", simulationSummary.totalInvestido],
       ["Juros ganhos", simulationSummary.jurosGanhos],
       ["Rentabilidade (%)", simulationSummary.rentabilidade],
+      ["Link compartilhável", simulationSummary.shareUrl || ""],
     ];
 
     const evolutionData = [
@@ -462,6 +509,18 @@ function initCompoundCalculator() {
 
     simulationSummary.resumoTexto =
       buildSimulationSummaryText(simulationSummary);
+
+    simulationSummary.shareUrl = buildSimulationShareUrl({
+      valorInicial: simulationSummary.valorInicial,
+      aporte: simulationSummary.aporte,
+      taxa: simulationSummary.taxa,
+      tipoTaxa: simulationSummary.tipoTaxa,
+      tempo: simulationSummary.tempo,
+    });
+
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState({}, "", simulationSummary.shareUrl);
+    }
 
     document.getElementById("resValorFinal").textContent =
       simulationSummary.valorFinalFormatado;
@@ -625,6 +684,48 @@ function initCompoundCalculator() {
     });
   }
 
+  if (shareSimulationButton) {
+    shareSimulationButton.addEventListener("click", async () => {
+      if (!simulationSummary?.shareUrl) {
+        runSimulation();
+      }
+
+      if (!simulationSummary?.shareUrl) {
+        return;
+      }
+
+      const originalHtml = shareSimulationButton.innerHTML;
+
+      try {
+        if (navigator.share) {
+          await navigator.share({
+            title: "Simulação de juros compostos",
+            text: "Veja esta simulação:",
+            url: simulationSummary.shareUrl,
+          });
+
+          shareSimulationButton.classList.add("action-button-success");
+          shareSimulationButton.innerHTML =
+            '<i class="bi bi-check2"></i> Link compartilhado';
+        } else {
+          await copyTextToClipboard(simulationSummary.shareUrl);
+          shareSimulationButton.classList.add("action-button-success");
+          shareSimulationButton.innerHTML =
+            '<i class="bi bi-check2"></i> Link copiado';
+        }
+      } catch (error) {
+        if (error?.name !== "AbortError") {
+          alert("Não foi possível compartilhar a simulação.");
+        }
+      }
+
+      setTimeout(() => {
+        shareSimulationButton.classList.remove("action-button-success");
+        shareSimulationButton.innerHTML = originalHtml;
+      }, 1800);
+    });
+  }
+
   button.addEventListener("click", runSimulation);
 
   if (quickScenarioButtons.length) {
@@ -662,5 +763,35 @@ function initCompoundCalculator() {
         runSimulation();
       });
     });
+  }
+
+  const sharedValues = readSimulationFromUrl();
+
+  if (sharedValues) {
+    if (valorInicialInput) {
+      valorInicialInput.value = formatMoneyInputFromNumber(
+        sharedValues.valorInicial,
+      );
+    }
+
+    if (aporteInput) {
+      aporteInput.value = formatMoneyInputFromNumber(sharedValues.aporte);
+    }
+
+    if (taxaInput) {
+      taxaInput.value = sharedValues.taxa;
+    }
+
+    if (tipoTaxaInput) {
+      tipoTaxaInput.value = sharedValues.tipoTaxa;
+    }
+
+    if (tempoInput) {
+      tempoInput.value = sharedValues.tempo > 0 ? sharedValues.tempo : "";
+    }
+
+    if (sharedValues.tempo > 0) {
+      runSimulation();
+    }
   }
 }
