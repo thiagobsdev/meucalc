@@ -43,7 +43,7 @@ include '../includes/sidebar.php';
                     Começar simulação
                 </a>
 
-                <span class="page-inline-note">Ideal para comparar cenários antes de investir.</span>
+                <span class="page-inline-note">Simule seu investimento de forma rápida e clara.</span>
             </div>
         </div>
 

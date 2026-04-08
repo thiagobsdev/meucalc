@@ -2051,4 +2051,361 @@ select.form-control.form-control-icon {
   .form-control {
     height: 54px;
   }
+
+  @media (max-width: 768px) {
+    .main-content {
+      padding: 18px 12px 28px;
+    }
+
+    .topbar {
+      padding: 0 14px;
+    }
+
+    .brand {
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+    }
+
+    .brand-title {
+      font-size: 0.96rem;
+    }
+
+    .menu-toggle {
+      width: 42px;
+      height: 42px;
+    }
+
+    .page-header-enhanced {
+      margin-bottom: 18px;
+    }
+
+    .page-header-content {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .page-header-main {
+      padding: 22px 18px;
+      border-radius: 22px;
+      gap: 16px;
+    }
+
+    .page-badge {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+      font-size: 0.76rem;
+      padding: 8px 12px;
+    }
+
+    .page-header-enhanced h1 {
+      font-size: 1.95rem;
+      line-height: 1.08;
+    }
+
+    .page-header-enhanced p {
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
+    .page-benefits {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .page-benefit-chip {
+      min-height: auto;
+      padding: 11px 14px;
+      font-size: 0.92rem;
+    }
+
+    .page-header-actions {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+    }
+
+    .page-header-actions .hero-button {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .page-inline-note {
+      width: 100%;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .page-header-preview {
+      display: none;
+    }
+
+    .calc-card,
+    .summary-text-card,
+    .chart-card,
+    .table-card,
+    .trust-card {
+      padding: 18px;
+      border-radius: 20px;
+    }
+
+    .calc-card-head {
+      margin-bottom: 18px;
+    }
+
+    .calc-card-head h2 {
+      font-size: 1.9rem;
+      line-height: 1.08;
+    }
+
+    .calc-card-head p {
+      font-size: 0.98rem;
+      line-height: 1.55;
+    }
+
+    .quick-scenarios {
+      padding: 14px;
+      margin-bottom: 20px;
+      border-radius: 18px;
+    }
+
+    .quick-scenarios-head {
+      margin-bottom: 14px;
+      gap: 10px;
+    }
+
+    .quick-scenarios-head h3 {
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+
+    .quick-scenarios-head p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .quick-scenarios-grid {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      padding-bottom: 4px;
+      grid-template-columns: none;
+      scroll-snap-type: x proximity;
+    }
+
+    .quick-scenarios-grid::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .quick-scenarios-grid::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.22);
+      border-radius: 999px;
+    }
+
+    .quick-scenario-button {
+      min-width: 220px;
+      flex: 0 0 220px;
+      min-height: auto;
+      scroll-snap-align: start;
+      padding: 14px;
+    }
+
+    .quick-scenario-title {
+      font-size: 0.94rem;
+    }
+
+    .quick-scenario-meta {
+      font-size: 0.8rem;
+    }
+
+    .form-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .form-label {
+      margin-bottom: 6px;
+      font-size: 0.92rem;
+    }
+
+    .form-control {
+      height: 54px;
+      font-size: 1rem;
+    }
+
+    .input-wrap-icon .input-icon {
+      left: 14px;
+    }
+
+    .calc-button {
+      height: 56px;
+      margin-top: 20px;
+      font-size: 1rem;
+    }
+
+    .impact-banner {
+      padding: 18px;
+      flex-direction: column;
+      gap: 12px;
+      border-radius: 20px;
+    }
+
+    .impact-banner-content strong {
+      font-size: 1rem;
+      line-height: 1.45;
+    }
+
+    .insight-grid,
+    .summary-grid,
+    .trust-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .summary-card-primary {
+      grid-column: span 1;
+    }
+
+    .summary-card,
+    .insight-card {
+      min-height: auto;
+      padding: 18px;
+    }
+
+    .summary-value {
+      font-size: 1.45rem;
+    }
+
+    .summary-card-primary .summary-value {
+      font-size: 1.7rem;
+    }
+
+    .result-actions {
+      justify-content: stretch;
+      gap: 10px;
+    }
+
+    .action-button {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .chart-card-premium .chart-container {
+      height: 280px;
+      min-height: 280px;
+    }
+
+    .table-responsive-custom {
+      border-radius: 14px;
+    }
+
+    .trust-section-premium {
+      margin-top: 26px;
+    }
+
+    .trust-section-head {
+      margin-bottom: 16px;
+    }
+
+    .trust-section-head h2 {
+      font-size: 1.9rem;
+      line-height: 1.1;
+    }
+
+    .trust-section-head p {
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
+    .trust-card-head {
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .trust-card-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      font-size: 1rem;
+    }
+
+    .trust-card-head h3 {
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+
+    .trust-card-head p,
+    .trust-text,
+    .faq-content,
+    .trust-list li {
+      font-size: 0.96rem;
+      line-height: 1.65;
+    }
+
+    .trust-list {
+      gap: 10px;
+      padding-left: 18px;
+      margin-bottom: 18px;
+    }
+
+    .trust-note,
+    .trust-highlight {
+      padding: 12px 14px;
+      border-radius: 14px;
+      line-height: 1.55;
+    }
+
+    .faq-item summary {
+      padding: 15px 16px;
+      padding-right: 42px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .faq-item summary::after {
+      right: 16px;
+    }
+
+    .faq-content {
+      padding: 0 16px 15px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .page-header-enhanced h1 {
+      font-size: 1.75rem;
+    }
+
+    .calc-card-head h2,
+    .trust-section-head h2 {
+      font-size: 1.7rem;
+    }
+
+    .page-header-main,
+    .calc-card,
+    .summary-text-card,
+    .chart-card,
+    .table-card,
+    .trust-card {
+      padding: 16px;
+    }
+
+    .quick-scenario-button {
+      min-width: 200px;
+      flex-basis: 200px;
+    }
+
+    .summary-value {
+      font-size: 1.35rem;
+    }
+
+    .summary-card-primary .summary-value {
+      font-size: 1.55rem;
+    }
+  }
 }
