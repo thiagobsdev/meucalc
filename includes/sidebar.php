@@ -28,6 +28,11 @@ if (!isset($currentPage)) {
                 <span>Juros compostos</span>
             </a>
 
+            <a href="<?= $baseUrl ?>/pages/investimentos.php" class="sidebar-link <?= $currentPage === 'investimentos' ? 'active' : '' ?>">
+                <i class="bi bi-bank2"></i>
+                <span>Renda fixa</span>
+            </a>
+
             <div class="sidebar-section">Em breve</div>
 
             <div class="sidebar-link disabled">

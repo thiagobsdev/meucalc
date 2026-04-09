@@ -53,16 +53,22 @@ include 'includes/sidebar.php';
         <h3>Responsivo</h3>
         <p>Use no computador ou no celular com sidebar funcional e navegação mais limpa.</p>
     </article>
+
+    <article class="info-card">
+        <i class="bi bi-bank2"></i>
+        <h3>Renda fixa</h3>
+        <p>Compare Tesouro Selic, CDB, LCI/LCA, Prefixado e IPCA+ considerando inflação, impostos e taxas.</p>
+    </article>
 </section>
 
 <section class="cta-box">
     <div>
         <h4>Pronto para começar?</h4>
-        <p>Acesse a calculadora de juros compostos e faça sua primeira simulação.</p>
+        <p>Use a calculadora de juros compostos ou compare investimentos de renda fixa de forma prática.</p>
     </div>
 
     <a href="<?= $baseUrl ?>/pages/calculadora.php" class="cta-button">
-        Ver calculadora
+        Ver calculadoras
         <i class="bi bi-arrow-right"></i>
     </a>
 </section>

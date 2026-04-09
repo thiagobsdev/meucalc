@@ -2409,3 +2409,1052 @@ select.form-control.form-control-icon {
     }
   }
 }
+
+
+
+/* ===== COMPARADOR DE RENDA FIXA ===== */
+.rf-section {
+  margin-top: 28px;
+}
+
+.rf-form-grid {
+  align-items: end;
+}
+
+.rf-period-group {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(140px, 0.7fr);
+  gap: 12px;
+}
+
+.fixed-income-preset-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.rf-product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.rf-product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 22px;
+  border-radius: 22px;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.86),
+    rgba(10, 18, 34, 0.82)
+  );
+  box-shadow: var(--shadow);
+}
+
+.rf-product-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.rf-product-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #dbeafe;
+  font-weight: 600;
+}
+
+.rf-product-check input {
+  width: 18px;
+  height: 18px;
+  accent-color: #3b82f6;
+}
+
+.rf-product-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.22);
+  color: #bfdbfe;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.rf-product-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.rf-product-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+  font-size: 1.1rem;
+}
+
+.rf-product-head h4 {
+  font-size: 1.08rem;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.rf-product-head p {
+  color: var(--muted);
+  line-height: 1.65;
+  font-size: 0.94rem;
+}
+
+.rf-product-note-list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.rf-product-note-list span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(2, 6, 23, 0.5);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  color: #dbeafe;
+  font-size: 0.83rem;
+}
+
+.rf-results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.rf-result-card {
+  padding: 24px;
+  border-radius: 24px;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.9),
+    rgba(10, 18, 34, 0.86)
+  );
+  box-shadow: var(--shadow);
+}
+
+.rf-result-card-best {
+  border-color: rgba(96, 165, 250, 0.3);
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(59, 130, 246, 0.12),
+      transparent 36%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(15, 23, 42, 0.92),
+      rgba(10, 18, 34, 0.88)
+    );
+}
+
+.rf-result-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.rf-result-kicker {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: #93c5fd;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.rf-result-card h3 {
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.rf-result-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.22);
+  color: #bbf7d0;
+  font-size: 0.74rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.rf-result-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.rf-result-metric {
+  min-height: 98px;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(2, 6, 23, 0.42);
+  border: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+.rf-result-metric span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.rf-result-metric strong {
+  display: block;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  color: #eff6ff;
+}
+
+.rf-result-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.rf-result-footer span {
+  color: #cbd5e1;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.rf-result-section {
+  gap: 22px;
+}
+
+.rf-ranking-table,
+.rf-comparison-table {
+  min-width: 1080px;
+}
+
+@media (max-width: 1200px) {
+  .rf-product-grid,
+  .rf-results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fixed-income-preset-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .rf-period-group {
+    grid-template-columns: 1fr;
+  }
+
+  .rf-product-card,
+  .rf-result-card {
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .rf-result-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .rf-result-metric {
+    min-height: auto;
+  }
+
+  .rf-result-metric strong {
+    font-size: 1.08rem;
+  }
+
+  .rf-product-head {
+    gap: 12px;
+  }
+
+  .rf-product-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+  }
+
+  .rf-product-head h4 {
+    font-size: 1rem;
+  }
+}
+
+
+.rf-inline-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+@media (max-width: 768px) {
+  .rf-inline-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ===== AJUSTES COMPACTOS DA CALCULADORA DE RENDA FIXA ===== */
+.rf-results-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  gap: 18px;
+  align-items: end;
+}
+
+.rf-results-toolbar h3 {
+  font-size: 1.12rem;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.rf-results-toolbar p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+#rfResultadoCardAtual {
+  display: block;
+}
+
+.rf-result-note {
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(2, 6, 23, 0.42);
+  border: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+.rf-result-note h4 {
+  font-size: 0.98rem;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.rf-result-note p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.rf-result-note-list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.rf-result-note-list span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  color: #dbeafe;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.rf-result-note-list i {
+  color: #93c5fd;
+}
+
+.rf-result-details .faq-content {
+  padding-top: 18px;
+}
+
+.rf-inner-card {
+  margin-top: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+.rf-tax-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.rf-tax-card {
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  background: rgba(2, 6, 23, 0.34);
+}
+
+.rf-tax-card h4 {
+  font-size: 1rem;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.rf-tax-card p {
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 0.94rem;
+}
+
+.rf-tax-note {
+  margin-top: 18px;
+}
+
+@media (max-width: 991px) {
+  .rf-results-toolbar,
+  .rf-tax-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .rf-results-toolbar {
+    gap: 14px;
+  }
+
+  .rf-result-note {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .rf-result-note-list {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .rf-tax-card {
+    padding: 16px;
+    border-radius: 18px;
+  }
+}
+
+
+/* ===== Renda fixa - layout interativo ===== */
+.rf-modern-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.8fr);
+  gap: 20px;
+  align-items: stretch;
+  margin-bottom: 24px;
+}
+
+.rf-modern-hero-copy,
+.rf-modern-hero-note,
+.rf-modern-panel,
+.rf-modern-ranking,
+.rf-modern-detail-card {
+  background: rgba(15, 23, 42, 0.78);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.rf-modern-hero-copy {
+  padding: 30px;
+}
+
+.rf-modern-eyebrow,
+.rf-modern-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.22);
+  color: #bfdbfe;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.rf-modern-hero-copy h1 {
+  margin-top: 16px;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+}
+
+.rf-modern-hero-copy h1 span {
+  color: #60a5fa;
+}
+
+.rf-modern-hero-copy p {
+  margin-top: 14px;
+  color: #cbd5e1;
+  line-height: 1.8;
+  max-width: 760px;
+}
+
+.rf-modern-hero-note {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.rf-modern-hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.22);
+  color: #bbf7d0;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.rf-modern-hero-note p {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.rf-modern-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.8fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.rf-modern-main,
+.rf-modern-aside {
+  min-width: 0;
+}
+
+.rf-modern-panel {
+  padding: 26px;
+}
+
+.rf-modern-panel-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.rf-modern-panel-head h2 {
+  margin-top: 12px;
+  font-size: 1.6rem;
+  color: #ffffff;
+}
+
+.rf-modern-panel-head p {
+  color: var(--muted);
+  max-width: 340px;
+  line-height: 1.65;
+}
+
+.rf-modern-presets {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.rf-modern-preset {
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  background: rgba(2, 6, 23, 0.52);
+  color: #dbeafe;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.rf-modern-preset:hover,
+.rf-modern-preset.is-active {
+  background: rgba(59, 130, 246, 0.16);
+  border-color: rgba(59, 130, 246, 0.28);
+}
+
+.rf-modern-input-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.rf-modern-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rf-modern-field > span {
+  font-size: 0.88rem;
+  color: #cbd5e1;
+  font-weight: 600;
+}
+
+.rf-modern-period {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 124px;
+  gap: 12px;
+}
+
+.rf-modern-divider {
+  height: 1px;
+  background: rgba(148, 163, 184, 0.12);
+  margin: 22px 0;
+}
+
+.rf-modern-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.rf-modern-mini-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  background: rgba(2, 6, 23, 0.38);
+}
+
+.rf-modern-mini-card span {
+  color: #cbd5e1;
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.rf-modern-mini-input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rf-modern-mini-input .form-control {
+  height: 48px;
+  padding: 0 14px;
+}
+
+.rf-modern-mini-input small {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.rf-modern-product-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.rf-modern-check {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  background: rgba(2, 6, 23, 0.45);
+  color: #e2e8f0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.rf-modern-check input {
+  accent-color: #3b82f6;
+}
+
+.rf-modern-actions {
+  margin-top: 20px;
+}
+
+.rf-modern-helper {
+  margin-top: 12px;
+  color: var(--muted);
+  line-height: 1.65;
+  font-size: 0.94rem;
+}
+
+.rf-modern-ranking {
+  position: sticky;
+  top: calc(var(--topbar-height) + 16px);
+  padding: 24px;
+}
+
+.rf-modern-total {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.rf-modern-total span {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.rf-modern-total strong {
+  color: #38bdf8;
+  font-size: 1.9rem;
+  line-height: 1.1;
+}
+
+.rf-modern-ranking-head {
+  margin: 22px 0 18px;
+}
+
+.rf-modern-ranking-head h3 {
+  margin-top: 10px;
+  font-size: 1.8rem;
+  color: #ffffff;
+}
+
+.rf-modern-ranking-head p {
+  margin-top: 8px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.rf-modern-ranking-list {
+  display: grid;
+  gap: 12px;
+}
+
+.rf-modern-rank-item {
+  width: 100%;
+  padding: 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  background: rgba(2, 6, 23, 0.34);
+  color: #e2e8f0;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.rf-modern-rank-item:hover,
+.rf-modern-rank-item.is-selected {
+  border-color: rgba(59, 130, 246, 0.3);
+  background: rgba(15, 23, 42, 0.88);
+}
+
+.rf-modern-rank-head,
+.rf-modern-rank-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.rf-modern-rank-head strong {
+  color: #ffffff;
+  font-size: 0.98rem;
+}
+
+.rf-modern-rank-bar-track {
+  margin: 10px 0 8px;
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.12);
+  overflow: hidden;
+}
+
+.rf-modern-rank-bar {
+  height: 100%;
+  border-radius: inherit;
+}
+
+.rf-modern-rank-meta {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.rf-modern-ranking-note {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.16);
+  color: #dbeafe;
+  line-height: 1.65;
+}
+
+.rf-modern-detail-wrap {
+  margin-top: 26px;
+  display: grid;
+  gap: 22px;
+}
+
+.rf-modern-detail-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: end;
+  flex-wrap: wrap;
+}
+
+.rf-modern-detail-top h2 {
+  margin-top: 12px;
+  font-size: 1.8rem;
+  color: #ffffff;
+}
+
+.rf-modern-detail-select {
+  min-width: 260px;
+}
+
+.rf-modern-detail-select label {
+  display: block;
+  margin-bottom: 8px;
+  color: #cbd5e1;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.rf-modern-detail-card {
+  padding: 26px;
+}
+
+.rf-modern-detail-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.rf-modern-detail-kicker {
+  display: inline-block;
+  color: #60a5fa;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.rf-modern-detail-header h3 {
+  font-size: 1.75rem;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.rf-modern-detail-header p {
+  max-width: 720px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.rf-modern-detail-chip-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.rf-modern-detail-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.18);
+  color: #dbeafe;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.rf-modern-metrics-grid {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.rf-modern-metric {
+  min-height: 118px;
+  padding: 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  background: rgba(2, 6, 23, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.rf-modern-metric.is-highlight {
+  background: linear-gradient(
+      135deg,
+      rgba(37, 99, 235, 0.18),
+      rgba(59, 130, 246, 0.1)
+    ),
+    rgba(2, 6, 23, 0.4);
+  border-color: rgba(59, 130, 246, 0.24);
+}
+
+.rf-modern-metric span {
+  color: var(--muted);
+  line-height: 1.5;
+  font-size: 0.84rem;
+}
+
+.rf-modern-metric strong {
+  color: #ffffff;
+  font-size: 1.22rem;
+  line-height: 1.25;
+}
+
+.rf-modern-detail-foot {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.rf-modern-detail-summary {
+  padding: 16px 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  background: rgba(2, 6, 23, 0.34);
+  color: #dbeafe;
+  line-height: 1.65;
+}
+
+.rf-modern-detail-summary strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #ffffff;
+}
+
+.rf-modern-chart-and-table {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(340px, 0.8fr);
+  gap: 22px;
+}
+
+.rf-modern-chart-card,
+.rf-modern-table-card {
+  margin-top: 0;
+}
+
+.rf-modern-chart-container {
+  height: 420px;
+  min-height: 420px;
+}
+
+.rf-modern-table tbody tr td:first-child {
+  font-weight: 700;
+}
+
+@media (max-width: 1200px) {
+  .rf-modern-hero,
+  .rf-modern-layout,
+  .rf-modern-chart-and-table {
+    grid-template-columns: 1fr;
+  }
+
+  .rf-modern-ranking {
+    position: static;
+  }
+
+  .rf-modern-mini-grid,
+  .rf-modern-metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .rf-modern-hero-copy,
+  .rf-modern-hero-note,
+  .rf-modern-panel,
+  .rf-modern-ranking,
+  .rf-modern-detail-card {
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .rf-modern-hero-copy h1,
+  .rf-modern-ranking-head h3,
+  .rf-modern-detail-top h2,
+  .rf-modern-detail-header h3 {
+    font-size: 1.7rem;
+  }
+
+  .rf-modern-input-grid,
+  .rf-modern-mini-grid,
+  .rf-modern-metrics-grid,
+  .rf-modern-detail-foot {
+    grid-template-columns: 1fr;
+  }
+
+  .rf-modern-period {
+    grid-template-columns: 1fr;
+  }
+
+  .rf-modern-presets,
+  .rf-modern-product-picker {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 6px;
+  }
+
+  .rf-modern-preset,
+  .rf-modern-check {
+    flex: 0 0 auto;
+  }
+
+  .rf-modern-total strong {
+    font-size: 1.55rem;
+  }
+
+  .rf-modern-detail-select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .rf-modern-chart-container {
+    height: 300px;
+    min-height: 300px;
+  }
+}

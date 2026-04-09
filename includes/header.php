@@ -12,6 +12,12 @@ if (isset($currentPage) && $currentPage === 'juros') {
     $pageDescription = 'Calcule juros compostos com aporte mensal, taxa mensal ou anual e veja a evolução do investimento no MeuCalc.';
     $canonicalUrl = 'https://meucalc.com.br/pages/calculadora.php';
 }
+
+if (isset($currentPage) && $currentPage === 'investimentos') {
+    $pageTitle = 'Comparador de Investimentos de Renda Fixa | MeuCalc';
+    $pageDescription = 'Compare Tesouro Selic, CDB, LCI/LCA, Prefixado e Tesouro IPCA+, considerando impostos, taxas e IPCA apenas quando aplicável.';
+    $canonicalUrl = 'https://meucalc.com.br/pages/investimentos.php';
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
